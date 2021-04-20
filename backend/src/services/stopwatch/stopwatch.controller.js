@@ -1,26 +1,22 @@
 const Stopwatch = require("./stopwatch.model");
 
+const { asyncHandler } = require("../../middleware/async");
+
 class StopwatchControllerClass {
-  list = async (req, res) => {
-    try {
-      const records = await Stopwatch.findAll();
-      res.json(records);
-    } catch (err) {
-      console.error(`[Error]: ${err}`);
-    }
-  };
+  list = asyncHandler(async (req, res) => {
+    const records = await Stopwatch.findAll();
+    res.json(records);
+  });
 
-  create = async (req, res) => {
-    const data = {
-      hour: 0.0,
-      minute: 1,
-      second: 30,
-    };
+  create = asyncHandler(async (req, res) => {
+    const { hour, minute, second, milliseconds } = req.body;
 
-    await Stopwatch.create(data);
+    const data = { hour, minute, second, milliseconds };
 
-    res.redirect("/stopwatch");
-  };
+    const stopwatch = await Stopwatch.create(data);
+
+    res.json({ data: stopwatch });
+  });
 }
 
 const StopwatchController = new StopwatchControllerClass();

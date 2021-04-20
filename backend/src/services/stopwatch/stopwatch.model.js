@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const sequelize = require("../../../config/database");
+const sequelize = require("../../config/database");
 
 const Stopwatch = sequelize.define("stopwatch", {
   id: {
@@ -20,6 +20,10 @@ const Stopwatch = sequelize.define("stopwatch", {
     allowNull: false,
   },
   second: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  milliseconds: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },

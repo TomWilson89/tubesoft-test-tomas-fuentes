@@ -2,9 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const { stopwatchRoutes } = require("../routes");
 
-const db = require("../config/database");
+const { stopwatchRoutes } = require("./routes");
+const errorMiddleware = require("./middleware/error");
+const RouteNotFound = require("./errors/routeNotFound");
+
+const db = require("./config/database");
 
 class App {
   constructor() {
@@ -22,11 +25,11 @@ class App {
     this.app.use(express.json({ limit: "50mb" }));
     this.app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
-    this.app.use("/stopwatch", stopwatchRoutes);
+    this.app.use("/", stopwatchRoutes);
 
-    this.app.use((req, res) => {
-      res.status(404).send("404: Page not found");
-    });
+    this.app.use((req, res, next) => next(new RouteNotFound()));
+
+    this.app.use(errorMiddleware);
   }
 
   connect() {
