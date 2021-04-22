@@ -1,0 +1,27 @@
+.Action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > button {
+    width: 70px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(63, 21, 40);
+    margin: 2px;
+    transition: all 0.5s;
+
+    &:hover {
+      box-shadow: 2px 3px 3px rgba(27, 26, 26, 0.5);
+      cursor: pointer;
+    }
+  }
+
+  .Button {
+    height: 70px;
+    border-radius: 50%;
+    background-color: #333;
+    background: linear-gradient(to bottom right, #333, #878484);
+  }
+}

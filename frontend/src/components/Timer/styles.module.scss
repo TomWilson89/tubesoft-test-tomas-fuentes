@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap");
+
+.Timer {
+  font-family: "Teko", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding: 30px 0px;
+}
+
+.Min,
+.Sec,
+.Msec {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #333;
+  color: #f4f3f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 5px;
+}
