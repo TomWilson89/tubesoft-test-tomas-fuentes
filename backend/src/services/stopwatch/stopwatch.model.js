@@ -1,32 +1,18 @@
-const Sequelize = require("sequelize");
+module.exports = (sequelize, Sequelize) => {
+  const Stopwatch = sequelize.define("stopwatch", {
+    minute: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    second: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    millisecond: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+  });
 
-const sequelize = require("../../config/database");
-
-const Stopwatch = sequelize.define("stopwatch", {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true,
-    unique: true,
-  },
-
-  hour: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  minute: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  second: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  milliseconds: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-});
-
-module.exports = Stopwatch;
+  return Stopwatch;
+};

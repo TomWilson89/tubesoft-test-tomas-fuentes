@@ -1,4 +1,4 @@
-const Stopwatch = require("./stopwatch.model");
+const Stopwatch = require("../../config/database").stopwatch;
 
 const { asyncHandler } = require("../../middleware/async");
 
@@ -9,9 +9,9 @@ class StopwatchControllerClass {
   });
 
   create = asyncHandler(async (req, res) => {
-    const { hour, minute, second, milliseconds } = req.body;
+    const { minute, second, millisecond } = req.body;
 
-    const data = { hour, minute, second, milliseconds };
+    const data = { minute, second, millisecond };
 
     const stopwatch = await Stopwatch.create(data);
 
