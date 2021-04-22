@@ -39,7 +39,8 @@ class App {
   }
 }
 
-db.sync()
+db.sequelize
+  .sync()
   .then(() => console.log("[Database]: Connected"))
   .catch((err) => console.error(`[Error]: ${err}`));
 
